@@ -1,0 +1,13 @@
+
+.footer {
+	position: absolute;
+    bottom: 0;
+    width: 100%;
+    line-height: 60px;
+    display: block;
+}
+
+.container {
+	background:url("../../../assets/grability-logo.png") no-repeat right;
+	background-size: 30px;
+}

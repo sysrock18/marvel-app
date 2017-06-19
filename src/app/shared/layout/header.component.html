@@ -1,5 +1,4 @@
 <nav class="navbar navbar-toggleable-sm navbar-inverse bg-inverse">
-  <div class="container">
     <button class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -7,11 +6,10 @@
     	<img src="assets/marvel-logo.png" class="header-logo">
     </a>
 
-    <div class="collapse navbar-collapse justify-content-end" [ngClass]="{'collapse': !isCollapsed}">
+    <div class="collapse navbar-collapse" [ngClass]="{'collapse': !isCollapsed}">
       <form class="form-inline">
         <input class="form-control mr-sm-2" type="text" placeholder="Character">
         <button class="btn btn-outline-danger my-sm-0" type="submit">Search</button>
       </form>
     </div>
-  </div>
 </nav>

@@ -1,4 +1,4 @@
-<div class="container page">
+<div class="container-fluid page">
 
 	<div class="row">
 		
@@ -6,11 +6,48 @@
 			<div class="title-characters">
 				<span>Characters</span>
 			</div>
+
+			<div class="row characters">
+				<div class="item col-sm-12 col-md-12 col-lg-6 col-xl-6">
+					<h5>Grability</h5>
+					<img src="assets/grability-logo.png" class="rounded-circle">
+					<div class="card"></div>
+				</div>
+				<div class="item col-sm-12 col-md-12 col-lg-6 col-xl-6">
+					<h5>Grability</h5>
+					<img src="assets/grability-logo.png" class="rounded-circle">
+					<div class="card"></div>
+				</div>
+				<div class="item col-sm-12 col-md-12 col-lg-6 col-xl-6">
+					<h5>Grability</h5>
+					<img src="assets/grability-logo.png" class="rounded-circle">
+					<div class="card"></div>
+				</div>
+				<div class="item col-sm-12 col-md-12 col-lg-6 col-xl-6">
+					<h5>Grability</h5>
+					<img src="assets/grability-logo.png" class="rounded-circle">
+					<div class="card"></div>
+				</div>
+			</div>
+			
+			<div style="text-align: center;">
+			<ngb-pagination collectionSize="70" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
+			</div>
+
 		</div>
 
 		<div class="col-md-3 no-float favourites-container">
 			<div class="title-favourites">
 				<span>My Favourites</span>
+			</div>
+
+			<div class="row">
+				
+					<div class="item-fav">
+						<img src="assets/btn-delete.png" class="rounded-circle" class="btn-delete">
+						<img src="assets/marvel-logo.png" id="magazine">
+					</div>
+
 			</div>
 		</div>
 

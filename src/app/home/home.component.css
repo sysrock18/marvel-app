@@ -35,3 +35,55 @@
   background: url('../../assets/favourites.png') 0 no-repeat;
   background-size: 28px;
 }
+
+.characters {
+	margin-top: 20px;
+}
+
+.characters .item {
+	height: 250px;
+	position: relative;
+	max-width: 500px;
+	min-width: 360px;
+	margin: auto;
+}
+
+.item img {
+	height: 130px;
+	width: 130px;
+	position: absolute;
+	top:0;
+	left: 5px;
+	z-index: 2;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.item h5 {
+	position: absolute;
+	z-index: 2;
+	padding-left: 120px;
+}
+
+.item .card {
+	height: 220px;
+	z-index: 1;
+	margin-top: 10px; 
+}
+
+.item-fav {
+	position: relative;
+	margin:auto;
+}
+
+.btn-delete {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+#magazine {
+	height: 250px; 
+	width: 150px;
+	margin-top: 10px;
+	margin-right: 10px;
+}

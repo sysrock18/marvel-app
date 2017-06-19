@@ -3,3 +3,7 @@
 	height: 38px;
 	width: initial;
 }
+
+.navbar {
+	min-width: 220px;
+}

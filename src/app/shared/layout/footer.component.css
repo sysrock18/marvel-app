@@ -2,6 +2,7 @@
 .footer {
     width: 100%;
     height: 90px;
+    clear: both;
 }
 
 .container-footer {

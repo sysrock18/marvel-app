@@ -8,6 +8,8 @@
 .favourites-container {
   padding-top: 1rem;
   background-color: #cbcbcb;
+  overflow: auto;
+  max-height: 100vh;
 }
 
 .title-characters, .title-favourites {
@@ -38,6 +40,9 @@
 
 .characters {
 	margin-top: 20px;
+	max-width: 1010px;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 .characters .item {
@@ -61,29 +66,92 @@
 .item h5 {
 	position: absolute;
 	z-index: 2;
-	padding-left: 120px;
+	padding-left: 130px;
 }
 
-.item .card {
+.item .card-info {
 	height: 220px;
 	z-index: 1;
-	margin-top: 10px; 
+	margin-top: 10px;
+	background-color: #fff;
+	border:1px solid rgba(0,0,0,.125);
 }
 
-.item-fav {
-	position: relative;
+.favourites {
+	max-width: 360px;
 	margin:auto;
 }
 
-.btn-delete {
+.container-item-fav {
+	width: 180px;
+	margin: auto;
+}
+
+.item-fav {
+	width: 160px;
+	position: relative;
+}
+
+.item-fav .btn-delete {
 	position: absolute;
 	top: 0;
 	right: 0;
+	width: 30px;
+	height: 30px;
 }
 
-#magazine {
-	height: 250px; 
+.item-fav #magazine {
+	height: 220px; 
 	width: 150px;
 	margin-top: 10px;
-	margin-right: 10px;
 }
+
+ngb-pagination /deep/ .page-item .page-link {
+    margin-left: 5px;
+    color: #c2c2c2;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19);
+}
+
+ngb-pagination /deep/ .page-item.active .page-link {
+    margin-left: 5px;
+    font-weight: bold;
+    color: black;
+    background-color: #cbcbcb;
+    border-color: #cbcbcb;
+    box-shadow: none;
+}
+
+ngb-pagination /deep/ .pagination {
+    -webkit-box-pack: center!important;
+    -webkit-justify-content: center!important;
+    -ms-flex-pack: center!important;
+    justify-content: center!important;
+    margin-top: 30px;
+}
+
+.clearfix {
+	width: 130px;
+	height: 130px;
+	float: left;
+}
+
+.info {
+	word-wrap: break-word;
+	margin-top: 15px;
+	font-size: 0.8rem;
+	margin-right: 16px;
+}
+
+.btn-danger {
+	margin-top: 5px;
+	background-color: #f0141e;
+	border-color: #f0141e;
+}
+
+.btn-outline-danger {
+	color: #f0141e;
+	border-color: #f0141e;
+}
+
+
+

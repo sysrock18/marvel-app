@@ -6,7 +6,7 @@ import { SharedModule } from '../shared';
 
 const comicsRouting: ModuleWithProviders = RouterModule.forChild([
   {
-    path: '',
+    path: 'comics/:charname',
     component: ComicsComponent
   }
 ]);
@@ -22,4 +22,5 @@ const comicsRouting: ModuleWithProviders = RouterModule.forChild([
   providers: [
   ]
 })
+
 export class ComicsModule {}

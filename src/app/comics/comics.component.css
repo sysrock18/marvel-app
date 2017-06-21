@@ -5,11 +5,49 @@
 	background-color: #e2e2e2
 }
 
-img.avatar {
+.avatar-character {
+	height: 130px; min-width: 390px;
+}
+
+.avatar-character img {
 	height: 130px;
 	width: 130px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	float: left;
+}
+
+.avatar-character span {
+	margin-left: 15px;
+	font-size: 32px;
+}
+
+.comics {
+	margin-top: 40px;
+	padding-bottom: 30px;
+}
+
+.comics .item {
+	margin-bottom: 10px;
+	min-width: 330px;
+}
+
+.item-info {
+	padding: 15px;
+	background-color: #fff;
+	border:1px solid rgba(0,0,0,.125);
+}
+
+.item-info img {
+	height: 180px;
+	width: 120px;
+	float: left;
+	margin-right: 10px;
+}
+
+.item .options {
+	clear: both;
+	font-size: 0.8rem;
+	padding-top: 15px;
 }
 
 .info {

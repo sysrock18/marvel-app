@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../shared/services';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +10,34 @@ export class HomeComponent implements OnInit {
 
   public isCollapsed = false;
   public page = 1;
+  public loading = false;
+  public limit = 10;
+  public params = [];
+  public characters = [];
+  public size = 0;
 
-  constructor() { }
+  constructor(
+  	public apiService: ApiService
+  ) { }
 
   ngOnInit() {
+  	this.getCharacters();
+  }
+
+  getCharacters() {
+    this.loading = true;
+ 
+    this.params = [
+    	{key:'limit', value:this.limit},
+    	{key:'offset', value:this.limit * (this.page - 1)}
+    ];
+
+    this.apiService.get('characters', this.params)
+    .subscribe(resp => {
+      this.loading = false;
+      this.characters = resp.data.results;
+      this.size = resp.data.total;
+    });
   }
 
 }

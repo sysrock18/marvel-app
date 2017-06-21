@@ -7,63 +7,36 @@
 				<span>Characters</span>
 			</div>
 
-			<div class="row characters">
-				<div class="item col-sm-12 col-md-12 col-lg-6 col-xl-6">
-					<h5>Marvel</h5>
-					<img src="assets/marvel-logo.png" class="rounded-circle" />
-					<div class="card-info">
-						<div class="clearfix"></div>
-						<div class="info">gsfdnjkfagljkasafñoflksbdihfbasdljkfbasjlkfbsadjklfdsafkdsaklfbasfkalngjksdab</div>
-						<button [routerLink]="['/comics', 'asdasdd']" class="btn btn-danger btn-sm">View Comics</button>
-						<div style="clear: both; margin-left: 15px; font-size: 0.8rem">
-							<span style="font-weight: bold; font-size: 0.9rem">Related Comics</span>
-							<div class="row" style="margin-top: 5px;">
-								<div class="col-6">Comic # 1</div>
-								<div class="col-6">Comic # 1</div>
+			<div class="row characters" *ngIf="!loading">
+				<div class="col-character col-sm-12 col-md-12 col-lg-6 col-xl-6" *ngFor="let character of characters">
+					<div class="item">
+						<img src="{{ character.thumbnail.path + '/standard_large.' + character.thumbnail.extension }}" class="rounded-circle" />
+
+						<div class="item-info">
+							<div class="clearfix"></div>
+							<div class="info">
+								<h5>{{ character.name }}</h5>
+								{{ character.description }}
+								<span *ngIf="!character.description.length">No available description</span>
+							</div>
+							
+							<div class="container-comics">
+								<button [routerLink]="['/comics', character.id]" class="btn btn-danger btn-sm">View Comics</button>
+								<span class="title">Related Comics</span>
+								<div class="row">
+									<div class="col-6" *ngFor="let comic of character.comics.items | slice:0:3;">{{ comic.name }}</div>
+								</div>
+								<div *ngIf="!character.comics.available">Not Available Comics</div>
 							</div>
 						</div>
+
+						<div class="background-item"></div>
 					</div>
 				</div>
 
-				<div class="item col-sm-12 col-md-12 col-lg-6 col-xl-6">
-					<h5>Marvel</h5>
-					<img src="assets/marvel-logo.png" class="rounded-circle" />
-					<div class="card-info">
-						<div class="clearfix"></div>
-						<div class="info">gsfdnjkfagljkasafñoflksbdihfbasdljkfbasjlkfbsadjklfdsafkdsaklfbasfkalngjksdab</div>
-						<button type="button" class="btn btn-danger btn-sm">View More</button>
-					</div>
-				</div>
-				<div class="item col-sm-12 col-md-12 col-lg-6 col-xl-6">
-					<h5>Marvel</h5>
-					<img src="assets/marvel-logo.png" class="rounded-circle" />
-					<div class="card-info">
-						<div class="clearfix"></div>
-						<div class="info">gsfdnjkfagljkasafñoflksbdihfbasdljkfbasjlkfbsadjklfdsafkdsaklfbasfkalngjksdab</div>
-						<button type="button" class="btn btn-danger btn-sm">View More</button>
-					</div>
-				</div>
-				<div class="item col-sm-12 col-md-12 col-lg-6 col-xl-6">
-					<h5>Marvel</h5>
-					<img src="assets/marvel-logo.png" class="rounded-circle" />
-					<div class="card-info">
-						<div class="clearfix"></div>
-						<div class="info">gsfdnjkfagljkasafñoflksbdihfbasdljkfbasjlkfbsadjklfdsafkdsaklfbasfkalngjksdab</div>
-						<button type="button" class="btn btn-danger btn-sm">View More</button>
-					</div>
-				</div>
-				<div class="item col-sm-12 col-md-12 col-lg-6 col-xl-6">
-					<h5>Marvel</h5>
-					<img src="assets/marvel-logo.png" class="rounded-circle" />
-					<div class="card-info">
-						<div class="clearfix"></div>
-						<div class="info">gsfdnjkfagljkasafñoflksbdihfbasdljkfbasjlkfbsadjklfdsafkdsaklfbasfkalngjksdab</div>
-						<button type="button" class="btn btn-danger btn-sm">View More</button>
-					</div>
-				</div>
 			</div>
-			
-			<ngb-pagination [collectionSize]="1200" [(page)]="page" [maxSize]="5"></ngb-pagination>
+
+			<ngb-pagination [collectionSize]="size" [(page)]="page" [maxSize]="5" (pageChange)="getCharacters()" *ngIf="!loading"></ngb-pagination>
 
 		</div>
 
@@ -73,33 +46,12 @@
 			</div>
 
 			<div class="row favourites">
+
 				<div class="container-item-fav">
 					<div class="item-fav">
 						<img src="assets/btn-delete.png" class="rounded-circle" class="btn-delete" />
 						<img src="assets/marvel-logo.png" id="magazine" />
-						<p style="text-align: center;">ajlkfnjksgsjdk asdjfnsakldfnjkl</p>
-					</div>
-				</div>
-					
-				<div class="container-item-fav">
-					<div class="item-fav">
-						<img src="assets/btn-delete.png" class="rounded-circle" class="btn-delete" />
-						<img src="assets/marvel-logo.png" id="magazine" />
-						<p style="text-align: center;">ajlkfnjksgsjdk asdjfnsakldfnjkl</p>
-					</div>
-				</div>
-				<div class="container-item-fav">
-					<div class="item-fav">
-						<img src="assets/btn-delete.png" class="rounded-circle" class="btn-delete" />
-						<img src="assets/marvel-logo.png" id="magazine" />
-						<p style="text-align: center;">ajlkfnjksgsjdk asdjfnsakldfnjkl</p>
-					</div>
-				</div>
-				<div class="container-item-fav">
-					<div class="item-fav">
-						<img src="assets/btn-delete.png" class="rounded-circle" class="btn-delete" />
-						<img src="assets/marvel-logo.png" id="magazine" />
-						<p style="text-align: center;">ajlkfnjksgsjdk asdjfnsakldfnjkl</p>
+						<p>Lorem Ipsum</p>
 					</div>
 				</div>
 

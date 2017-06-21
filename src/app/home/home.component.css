@@ -9,7 +9,7 @@
   padding-top: 1rem;
   background-color: #cbcbcb;
   overflow: auto;
-  max-height: 100vh;
+  max-height: 100%;
 }
 
 .title-characters, .title-favourites {
@@ -38,6 +38,10 @@
   background-size: 28px;
 }
 
+.col-character {
+	min-width: 352px;
+}
+
 .characters {
 	margin-top: 20px;
 	max-width: 1010px;
@@ -46,11 +50,18 @@
 }
 
 .characters .item {
-	height: 250px;
+	height: auto;
 	position: relative;
 	max-width: 500px;
-	min-width: 360px;
-	margin: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
+}
+
+.item-info {
+	position: relative;
+	z-index: 2;
+	margin-left: 10px;
 }
 
 .item img {
@@ -63,18 +74,29 @@
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.item h5 {
-	position: absolute;
-	z-index: 2;
-	padding-left: 130px;
+.item-info h5 {
 }
 
-.item .card-info {
-	height: 220px;
+.item-info .card-info {
+	height: 100%;
 	z-index: 1;
 	margin-top: 10px;
 	background-color: #fff;
 	border:1px solid rgba(0,0,0,.125);
+}
+
+.item-info button {
+	display: block;
+	margin-bottom: 8px;
+}
+
+.background-item {
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	position: absolute;
+	top: 10px;
+	left: 10px;
 }
 
 .favourites {
@@ -106,6 +128,10 @@
 	margin-top: 10px;
 }
 
+.item-fav p {
+	text-align: center;
+}
+
 ngb-pagination /deep/ .page-item .page-link {
     margin-left: 5px;
     color: #c2c2c2;
@@ -129,6 +155,46 @@ ngb-pagination /deep/ .pagination {
     margin-top: 30px;
 }
 
+ngb-pagination /deep/ .page-item .page-link[aria-label="Previous"] span,
+ngb-pagination /deep/ .page-item .page-link[aria-label="Next"] span {
+    display: none;
+}
+
+ngb-pagination /deep/ .page-item .page-link[aria-label="Previous"]:hover,
+ngb-pagination /deep/ .page-item .page-link[aria-label="Next"]:hover {
+    background-color: #fff !important;
+}
+
+ngb-pagination /deep/ .page-item .page-link[aria-label="Previous"],
+ngb-pagination /deep/ .page-item .page-link[aria-label="Next"] {
+    padding: 6px;
+}
+
+ngb-pagination /deep/ .page-item .page-link[aria-label="Previous"]:after {
+    background: url('../../assets/btn_arrow_left.png');
+    background-size: 24px 24px;
+    height: 24px;
+    width: 24px;
+    display: block;
+    content: "";
+}
+
+ngb-pagination /deep/ .page-item .page-link[aria-label="Next"]:after {
+    background: url('../../assets/btn_arrow_right.png');
+    background-size: 24px 24px;
+    height: 24px;
+    width: 24px;
+    display: block;
+    content: "";
+}
+
+.pvw-title span {
+  display: none;
+}
+.pvw-title:after {
+  content: 'whatever it is you want to add';
+}
+
 .clearfix {
 	width: 130px;
 	height: 130px;
@@ -140,6 +206,7 @@ ngb-pagination /deep/ .pagination {
 	margin-top: 15px;
 	font-size: 0.8rem;
 	margin-right: 16px;
+	margin-left: 16px;
 }
 
 .btn-danger {
@@ -153,5 +220,22 @@ ngb-pagination /deep/ .pagination {
 	border-color: #f0141e;
 }
 
+.container-comics {
+	clear: both;
+	margin-left: 10px;
+	font-size: 0.8rem;
+	padding-top: 10px;
+}
+
+.container-comics .title {
+	font-weight: bold;
+	font-size: 0.9rem;
+	margin-top: 10px;
+}
+
+.container-comics .row .col-6 {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
 
 

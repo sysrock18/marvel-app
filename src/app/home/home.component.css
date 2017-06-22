@@ -211,8 +211,8 @@ ngb-pagination /deep/ .page-item .page-link[aria-label="Next"]:after {
 
 .btn-danger {
 	margin-top: 5px;
-	background-color: #f0141e;
-	border-color: #f0141e;
+	background-color: #dcdcdc;
+	border-color: #dcdcdc;
 }
 
 .btn-outline-danger {

@@ -26,18 +26,21 @@
 	padding-bottom: 30px;
 }
 
-.comics .item {
+.custom-col {
 	margin-bottom: 10px;
 	min-width: 330px;
 }
 
-.item-info {
-	padding: 15px;
+.item {
 	background-color: #fff;
 	border:1px solid rgba(0,0,0,.125);
 }
 
-.item-info img {
+.info {
+	padding: 15px;
+}
+
+.info img {
 	height: 180px;
 	width: 120px;
 	float: left;
@@ -50,9 +53,59 @@
 	padding-top: 15px;
 }
 
-.info {
-	word-wrap: break-word;
-	margin-top: 15px;
-	font-size: 0.8rem;
-	margin-right: 16px;
+.info .description {
+  word-wrap: break-word;
+  margin-top: 15px;
+  font-size: 0.8rem;
+  margin-right: 16px;
 }
+
+.btn-fav-add, .btn-buy {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
+  border: none;
+}
+
+.btn-fav-add img {
+  margin-right: 10px;
+}
+
+.btn-buy {
+  background-color: #dcdcdc;
+  color: #f0141e;
+}
+
+.btn-fav-add {
+  background-color: #f3f3f3;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,7 +6,7 @@ import { SharedModule } from '../shared';
 
 const comicsRouting: ModuleWithProviders = RouterModule.forChild([
   {
-    path: 'comics/:charname',
+    path: 'comics',
     component: ComicsComponent
   }
 ]);

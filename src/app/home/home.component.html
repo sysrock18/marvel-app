@@ -21,7 +21,7 @@
 							</div>
 							
 							<div class="container-comics">
-								<button [routerLink]="['/comics', character.id]" class="btn btn-danger btn-sm">View Comics</button>
+								<button (click)="goToCharacterComics(character)" class="btn btn-danger btn-sm">View Comics</button>
 								<span class="title">Related Comics</span>
 								<div class="row">
 									<div class="col-6" *ngFor="let comic of character.comics.items | slice:0:3;">{{ comic.name }}</div>

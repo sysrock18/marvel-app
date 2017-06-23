@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../shared/services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,8 @@ export class HomeComponent implements OnInit {
   public size = 0;
 
   constructor(
-  	public apiService: ApiService
+  	public apiService: ApiService,
+  	public router: Router
   ) { }
 
   ngOnInit() {
@@ -37,6 +39,16 @@ export class HomeComponent implements OnInit {
       this.loading = false;
       this.characters = resp.data.results;
       this.size = resp.data.total;
+    });
+  }
+
+  goToCharacterComics(character) {
+    this.router.navigate(['/comics'], { queryParams: { 
+        id: character.id,
+        name: character.name,
+        imagePath: character.thumbnail.path,
+        imageExtension: character.thumbnail.extension
+      }
     });
   }
 

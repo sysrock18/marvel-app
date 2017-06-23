@@ -39,23 +39,23 @@
 }
 
 .col-character {
-	min-width: 352px;
+  min-width: 352px;
 }
 
 .characters {
-	margin-top: 20px;
-	max-width: 1010px;
-	margin-right: auto;
-	margin-left: auto;
+  margin-top: 20px;
+  max-width: 1010px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .characters .item {
-	height: auto;
-	position: relative;
-	max-width: 500px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 20px;
+  height: auto;
+  position: relative;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
 }
 
 .item-info {
@@ -132,62 +132,6 @@
 	text-align: center;
 }
 
-ngb-pagination /deep/ .page-item .page-link {
-    margin-left: 5px;
-    color: #c2c2c2;
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19);
-}
-
-ngb-pagination /deep/ .page-item.active .page-link {
-    margin-left: 5px;
-    font-weight: bold;
-    color: black;
-    background-color: #cbcbcb;
-    border-color: #cbcbcb;
-    box-shadow: none;
-}
-
-ngb-pagination /deep/ .pagination {
-    -webkit-box-pack: center!important;
-    -webkit-justify-content: center!important;
-    -ms-flex-pack: center!important;
-    justify-content: center!important;
-    margin-top: 30px;
-}
-
-ngb-pagination /deep/ .page-item .page-link[aria-label="Previous"] span,
-ngb-pagination /deep/ .page-item .page-link[aria-label="Next"] span {
-    display: none;
-}
-
-ngb-pagination /deep/ .page-item .page-link[aria-label="Previous"]:hover,
-ngb-pagination /deep/ .page-item .page-link[aria-label="Next"]:hover {
-    background-color: #fff !important;
-}
-
-ngb-pagination /deep/ .page-item .page-link[aria-label="Previous"],
-ngb-pagination /deep/ .page-item .page-link[aria-label="Next"] {
-    padding: 6px;
-}
-
-ngb-pagination /deep/ .page-item .page-link[aria-label="Previous"]:after {
-    background: url('../../assets/btn_arrow_left.png');
-    background-size: 24px 24px;
-    height: 24px;
-    width: 24px;
-    display: block;
-    content: "";
-}
-
-ngb-pagination /deep/ .page-item .page-link[aria-label="Next"]:after {
-    background: url('../../assets/btn_arrow_right.png');
-    background-size: 24px 24px;
-    height: 24px;
-    width: 24px;
-    display: block;
-    content: "";
-}
-
 .pvw-title span {
   display: none;
 }
@@ -211,8 +155,8 @@ ngb-pagination /deep/ .page-item .page-link[aria-label="Next"]:after {
 
 .btn-danger {
 	margin-top: 5px;
-	background-color: #dcdcdc;
-	border-color: #dcdcdc;
+	background-color: #f0141e;
+	border-color: #f0141e;
 }
 
 .btn-outline-danger {

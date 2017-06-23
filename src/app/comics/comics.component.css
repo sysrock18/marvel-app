@@ -6,14 +6,14 @@
 }
 
 .avatar-character {
-	height: 130px; min-width: 390px;
+	height: 170px;
+	min-width: 390px;
 }
 
 .avatar-character img {
 	height: 130px;
 	width: 130px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	float: left;
 }
 
 .avatar-character span {
@@ -22,7 +22,6 @@
 }
 
 .comics {
-	margin-top: 40px;
 	padding-bottom: 30px;
 }
 
@@ -34,6 +33,7 @@
 .item {
 	background-color: #fff;
 	border:1px solid rgba(0,0,0,.125);
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19);
 }
 
 .info {
@@ -68,7 +68,7 @@
   border: none;
 }
 
-.btn-fav-add img {
+.btn-fav-add img, .btn-buy img {
   margin-right: 10px;
 }
 

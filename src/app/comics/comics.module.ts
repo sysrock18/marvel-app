@@ -1,5 +1,6 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ComicsComponent } from './comics.component';
 import { SharedModule } from '../shared';
@@ -14,7 +15,8 @@ const comicsRouting: ModuleWithProviders = RouterModule.forChild([
 @NgModule({
   imports: [
     comicsRouting,
-    SharedModule
+    SharedModule,
+    NgbModule
   ],
   declarations: [
     ComicsComponent

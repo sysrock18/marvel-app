@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../shared/services';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -16,23 +16,39 @@ export class HomeComponent implements OnInit {
   public params = [];
   public characters = [];
   public size = 0;
+  public search_value = "";
 
   constructor(
   	public apiService: ApiService,
-  	public router: Router
+  	public router: Router,
+  	public route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-  	this.getCharacters();
+  	this.route
+      .queryParams
+      .subscribe(params => {
+        this.search_value = params.search_value;
+
+        console.log(params);
+
+        this.getCharacters();
+      });
   }
 
   getCharacters() {
     this.loading = true;
  
     this.params = [
-    	{key:'limit', value:this.limit},
-    	{key:'offset', value:this.limit * (this.page - 1)}
+      {key:'limit', value:this.limit},
+      {key:'offset', value:this.limit * (this.page - 1)}
     ];
+
+    if(this.search_value) {
+      this.params.push(
+        {key:'name', value:this.search_value }
+      );
+    }
 
     this.apiService.get('characters', this.params)
     .subscribe(resp => {

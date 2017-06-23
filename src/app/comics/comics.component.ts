@@ -29,7 +29,6 @@ export class ComicsComponent implements OnInit {
     this.route
       .queryParams
       .subscribe(params => {
-        console.log(params);
         this.characterId = params.id;
         this.characterName = params.name;
         this.characterImagePath = params.imagePath;
@@ -52,7 +51,6 @@ export class ComicsComponent implements OnInit {
       this.loading = false;
       this.comics = resp.data.results;
       this.size = resp.data.total;
-      console.log(this.comics);
     });
   }
 

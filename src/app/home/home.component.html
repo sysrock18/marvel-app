@@ -47,11 +47,11 @@
 
 			<div class="row favourites">
 
-				<div class="container-item-fav">
+				<div class="container-item-fav" *ngFor="let favourite of favourites">
 					<div class="item-fav">
-						<img src="assets/btn-delete.png" class="rounded-circle" class="btn-delete" />
-						<img src="assets/marvel-logo.png" id="magazine" />
-						<p>Lorem Ipsum</p>
+						<img src="assets/btn-delete.png" class="rounded-circle" class="btn-delete" (click)="delete(favourite.id)" />
+						<img src="{{ favourite.imgPath + '/standard_large.' + favourite.imgExtension }}" id="magazine" />
+						<p>{{ favourite.title }}</p>
 					</div>
 				</div>
 

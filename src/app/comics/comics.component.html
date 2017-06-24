@@ -15,7 +15,9 @@
 						<div class="description">{{ comic.description }}</div>
 					</div>
 					<div class="options">
-						<button class="btn-fav-add"><img src="../../assets/btn-favourites-default.png" /> ADD TO FAVOURITES</button>
+						<button class="btn-fav-add" (click)="addToFavourites(comic)" [ngClass]="{'btn-fav-add': !checkFavourite(comic.id), 'btn-fav-added': checkFavourite(comic.id)}">
+							<img src="../../assets/btn-favourites-default.png" /> ADD TO FAVOURITES
+						</button>
 						<button class="btn-buy"><img src="../../assets/shopping-cart-primary.png" /> BUY FOR ${{ comic.prices[0].price }}</button>
 					</div>
 				</div>

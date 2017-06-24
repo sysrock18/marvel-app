@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -8,18 +8,27 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  
+  public search_value = "";
 
   public searchForm = this.fb.group({
-    character: ["", Validators.required]
+    character: [this.search_value, Validators.required]
   });
 
   constructor(
     public router: Router,
-    public fb: FormBuilder
+    public fb: FormBuilder,
+    public route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-
+    this.route
+      .queryParams
+      .subscribe(params => {
+      	if(params.search_value) {
+          this.search_value = params.search_value;
+      	}
+      });
   }
 
   goToCharacterComics() {

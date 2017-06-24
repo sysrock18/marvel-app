@@ -19,6 +19,7 @@ export class ComicsComponent implements OnInit {
   public comics = [];
   public size = 0;
   public page = 1;
+  public favourites = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -26,6 +27,10 @@ export class ComicsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+  	if(localStorage.getItem('favourites')) {
+  	  this.favourites = JSON.parse(localStorage.getItem('favourites'));
+  	}
+
     this.route
       .queryParams
       .subscribe(params => {
@@ -42,8 +47,8 @@ export class ComicsComponent implements OnInit {
     this.loading = true;
  
     this.params = [
-    	{key:'limit', value:this.limit},
-    	{key:'offset', value:this.limit * (this.page - 1)}
+      {key:'limit', value:this.limit},
+      {key:'offset', value:this.limit * (this.page - 1)}
     ];
 
     this.apiService.get('characters/'+this.characterId+'/comics', this.params)
@@ -52,6 +57,40 @@ export class ComicsComponent implements OnInit {
       this.comics = resp.data.results;
       this.size = resp.data.total;
     });
+  }
+
+  addToFavourites(comic) {
+  	let favComic = {
+  	  id: comic.id,
+  	  title: comic.title,
+  	  imgPath: comic.thumbnail.path,
+  	  imgExtension: comic.thumbnail.extension
+  	};
+
+  	if(localStorage.getItem('favourites')) {
+  	  let storedFavourites = JSON.parse(localStorage.getItem('favourites'));
+  	  let favourites = storedFavourites;
+  	  favourites.push(
+  	    favComic
+	  );
+	  localStorage.setItem('favourites', JSON.stringify(favourites));
+  	} else {
+  	  let favourites = JSON.stringify([
+        favComic
+  	  ]);
+  	  localStorage.setItem('favourites', favourites);
+  	}
+  }
+
+  checkFavourite(id) {
+  	var index = this.favourites.findIndex(x=>x.id===id);
+  	console.log(index);
+ 
+	if(index >= 0) {
+      return true;
+ 	} else {
+ 	  return false;
+ 	}
   }
 
 }

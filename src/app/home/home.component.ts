@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   public characters = [];
   public size = 0;
   public search_value = "";
+  public favourites = []
 
   constructor(
   	public apiService: ApiService,
@@ -25,12 +26,12 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+  	this.favourites = JSON.parse(localStorage.getItem('favourites'));
+
   	this.route
       .queryParams
       .subscribe(params => {
         this.search_value = params.search_value;
-
-        console.log(params);
 
         this.getCharacters();
       });
@@ -46,7 +47,7 @@ export class HomeComponent implements OnInit {
 
     if(this.search_value) {
       this.params.push(
-        {key:'name', value:this.search_value }
+        {key:'nameStartsWith', value:this.search_value }
       );
     }
 
@@ -66,6 +67,16 @@ export class HomeComponent implements OnInit {
         imageExtension: character.thumbnail.extension
       }
     });
+  }
+
+  delete(id) {
+  	var index = this.favourites.findIndex(x=>x.id===id);
+ 
+	if(index >= 0) {
+      this.favourites.splice(index, 1);
+      localStorage.setItem('favourites', JSON.stringify(this.favourites));
+ 	}
+
   }
 
 }

@@ -8,7 +8,7 @@
 
     <div class="collapse navbar-collapse" [ngClass]="{'collapse': !isCollapsed}">
       <form class="form-inline" [formGroup]="searchForm" (ngSubmit)="goToCharacterComics($event)">
-        <input formControlName="character" class="form-control mr-sm-2" type="text" placeholder="Character">
+        <input formControlName="character" class="form-control mr-sm-2" type="text" placeholder="Character" value="{{ search_value }}">
         <button class="btn btn-outline-danger my-sm-0" type="submit">Search</button>
       </form>
     </div>

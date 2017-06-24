@@ -7,7 +7,7 @@
 	
 	<div class="container">
 		<div class="row comics" *ngIf="!loading">
-			<div class="custom-col col-sm-12 col-md-6 col-lg-6 col-xl-4" *ngFor="let comic of comics">
+			<div class="custom-col col-sm-12 col-md-6 col-lg-6 col-xl-4" *ngFor="let comic of comics; trackBy: trackComic">
 				<div class="item">
 					<div class="info">
 						<img src="{{ comic.thumbnail.path + '/portrait_large.' + comic.thumbnail.extension }}" />
@@ -15,10 +15,15 @@
 						<div class="description">{{ comic.description }}</div>
 					</div>
 					<div class="options">
-						<button class="btn-fav-add" (click)="addToFavourites(comic)" [ngClass]="{'btn-fav-add': !checkFavourite(comic.id), 'btn-fav-added': checkFavourite(comic.id)}">
-							<img src="../../assets/btn-favourites-default.png" /> ADD TO FAVOURITES
-						</button>
-						<button class="btn-buy"><img src="../../assets/shopping-cart-primary.png" /> BUY FOR ${{ comic.prices[0].price }}</button>
+						<div class="btn-fav-add" (click)="addToFavourites(comic)" [ngClass]="{'btn-fav-added': comic.isFavourite || checkFavourite(comic.id)}">
+							<img [src]="(comic.isFavourite || checkFavourite(comic.id)) ? '../../assets/btn-favourites-primary.png' : '../../assets/btn-favourites-default.png'" />
+							<span *ngIf="!(comic.isFavourite || checkFavourite(comic.id))">ADD TO FAVOURITES</span>
+							<span *ngIf="comic.isFavourite || checkFavourite(comic.id)">ADDED TO FAVOURITES</span>
+						</div>
+						<div class="btn-buy">
+							<img src="../../assets/shopping-cart-primary.png" />
+							BUY FOR ${{ comic.prices[0].price }}
+						</div>
 					</div>
 				</div>
 			</div>

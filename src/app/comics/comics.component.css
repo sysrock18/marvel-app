@@ -2,7 +2,8 @@
 .container-comics {
 	padding-top: 1rem;
 	padding-left: 1.5rem;
-	background-color: #e2e2e2
+	background-color: #e2e2e2;
+	min-height: 100vh;
 }
 
 .avatar-character {
@@ -60,7 +61,7 @@
   margin-right: 16px;
 }
 
-.btn-fav-add, .btn-buy {
+.btn-fav-add, .btn-buy, .btn-fav-added {
   padding: 10px;
   text-align: center;
   font-weight: bold;
@@ -79,6 +80,19 @@
 
 .btn-fav-add {
   background-color: #f3f3f3;
+}
+
+.btn-fav-add div {
+  height: 40px;
+}
+
+.btn-fav-added {
+  color: #f0141e;
+  background-color: #000;
+}
+
+.btn-fav-added div {
+  height: 40px;
 }
 
 

@@ -9,7 +9,7 @@
   padding-top: 1rem;
   background-color: #cbcbcb;
   overflow: auto;
-  max-height: 100%;
+  height: 100vh;
 }
 
 .title-characters, .title-favourites {

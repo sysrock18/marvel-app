@@ -27,9 +27,9 @@ export class ComicsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-  	if(localStorage.getItem('favourites')) {
-  	  this.favourites = JSON.parse(localStorage.getItem('favourites'));
-  	}
+    if(localStorage.getItem('favourites')) {
+      this.favourites = JSON.parse(localStorage.getItem('favourites'));
+    }
 
     this.route
       .queryParams
@@ -60,37 +60,40 @@ export class ComicsComponent implements OnInit {
   }
 
   addToFavourites(comic) {
-  	let favComic = {
-  	  id: comic.id,
-  	  title: comic.title,
-  	  imgPath: comic.thumbnail.path,
-  	  imgExtension: comic.thumbnail.extension
-  	};
+    if(!this.checkFavourite(comic.id)) {
+      comic.isFavourite = true;
 
-  	if(localStorage.getItem('favourites')) {
-  	  let storedFavourites = JSON.parse(localStorage.getItem('favourites'));
-  	  let favourites = storedFavourites;
-  	  favourites.push(
-  	    favComic
-	  );
-	  localStorage.setItem('favourites', JSON.stringify(favourites));
-  	} else {
-  	  let favourites = JSON.stringify([
-        favComic
-  	  ]);
-  	  localStorage.setItem('favourites', favourites);
-  	}
+      let favComic = {
+        id: comic.id,
+        title: comic.title,
+        imgPath: comic.thumbnail.path,
+        imgExtension: comic.thumbnail.extension
+      };
+
+      if(localStorage.getItem('favourites')) {
+        let storedFavourites = JSON.parse(localStorage.getItem('favourites'));
+        storedFavourites.push(
+          favComic
+        );
+        localStorage.setItem('favourites', JSON.stringify(storedFavourites));
+      } else {
+        let favourites = JSON.stringify([
+          favComic
+        ]);
+        localStorage.setItem('favourites', favourites);
+      }
+    }
+    this.favourites = JSON.parse(localStorage.getItem('favourites'));
   }
 
   checkFavourite(id) {
-  	var index = this.favourites.findIndex(x=>x.id===id);
-  	console.log(index);
+    var index = this.favourites.findIndex(x=>x.id===id);
  
-	if(index >= 0) {
+    if(index >= 0) {
       return true;
- 	} else {
- 	  return false;
- 	}
+    } else {
+      return false;
+    }
   }
 
 }

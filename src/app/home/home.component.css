@@ -28,9 +28,15 @@
   line-height: normal;
 }
 
+.title-characters button {
+  float: right;
+}
+
 .title-characters {
   background: url('../../assets/characters.png') 0 no-repeat;
   background-size: 28px;
+  width: 100%;
+  min-width: 352px;
 }
 
 .title-favourites {

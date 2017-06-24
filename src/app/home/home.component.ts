@@ -17,7 +17,8 @@ export class HomeComponent implements OnInit, AfterViewChecked {
   public characters = [];
   public size = 0;
   public search_value = "";
-  public favourites = []
+  public favourites = [];
+  public randomChars = [];
 
   constructor(
   	public apiService: ApiService,
@@ -61,6 +62,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
       this.loading = false;
       this.characters = resp.data.results;
       this.size = resp.data.total;
+      this.randomChars = resp.data.results;
     });
   }
 
@@ -77,11 +79,52 @@ export class HomeComponent implements OnInit, AfterViewChecked {
   delete(id) {
   	var index = this.favourites.findIndex(x=>x.id===id);
  
-	if(index >= 0) {
+  	if(index >= 0) {
       this.favourites.splice(index, 1);
       localStorage.setItem('favourites', JSON.stringify(this.favourites));
- 	}
+   	}
 
+  }
+
+  getRandomComics() {
+    let comics = [];
+    for(var i = 0; i < this.characters.length; i++) {
+      comics = comics.concat(this.characters[i].comics.items);
+    }
+    comics = comics.sort( function() { return 0.5 - Math.random() } ).splice(0,3);
+    
+    for(var i = 0; i < comics.length; i++) {
+      let id = comics[i].resourceURI.split("/");
+      id = id[id.length-1];
+      var index = this.favourites.findIndex(x=>x.id===id);
+      if(index < 0) {
+        this.apiService.get('comics/'+id, [])
+        .subscribe(resp => {
+          let comic = resp.data.results[0];
+          let favComic = {
+            id: comic.id,
+            title: comic.title,
+            imgPath: comic.thumbnail.path,
+            imgExtension: comic.thumbnail.extension
+          };
+
+          if(localStorage.getItem('favourites')) {
+            let storedFavourites = JSON.parse(localStorage.getItem('favourites'));
+            storedFavourites.push(
+              favComic
+            );
+            localStorage.setItem('favourites', JSON.stringify(storedFavourites));
+          } else {
+            let favourites = JSON.stringify([
+              favComic
+            ]);
+            localStorage.setItem('favourites', favourites);
+          }
+
+          this.favourites = JSON.parse(localStorage.getItem('favourites'));
+        });
+      }
+    }
   }
 
 }

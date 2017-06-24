@@ -5,6 +5,7 @@
 		<div id="characters-id" class="col-md-9 characters-container">
 			<div class="title-characters">
 				<span>Characters</span>
+				<button class="btn btn-warning btn-sm" (click)="getRandomComics()">Get Random Favourite Comics!</button>
 			</div>
 
 			<div class="row characters" *ngIf="!loading">
@@ -24,7 +25,7 @@
 								<button (click)="goToCharacterComics(character)" class="btn btn-danger btn-sm">View Comics</button>
 								<span class="title">Related Comics</span>
 								<div class="row">
-									<div class="col-6" *ngFor="let comic of character.comics.items | slice:0:3;">{{ comic.name }}</div>
+									<div class="col-6" *ngFor="let comic of character.comics.items | slice:0:4;">{{ comic.name }}</div>
 								</div>
 								<div *ngIf="!character.comics.available">Not Available Comics</div>
 							</div>

@@ -12,7 +12,8 @@ import {
   FooterComponent,
   HeaderComponent,
   SharedModule,
-  ApiService
+  ApiService,
+  FavouritesStorage
 } from './shared';
 
 const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: true });
@@ -34,6 +35,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
   ],
   providers: [
     ApiService,
+    FavouritesStorage,
     Md5
   ],
   bootstrap: [AppComponent]

@@ -22,77 +22,19 @@
 	font-size: 32px;
 }
 
-.comics {
+.comics-row {
 	padding-bottom: 30px;
 }
 
-.custom-col {
+.comics-row .comic-col {
 	margin-bottom: 10px;
 	min-width: 330px;
 }
 
-.item {
+.comic-col .item {
 	background-color: #fff;
 	border:1px solid rgba(0,0,0,.125);
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19);
-}
-
-.info {
-	padding: 15px;
-}
-
-.info img {
-	height: 180px;
-	width: 120px;
-	float: left;
-	margin-right: 10px;
-}
-
-.item .options {
-	clear: both;
-	font-size: 0.8rem;
-	padding-top: 15px;
-}
-
-.info .description {
-  word-wrap: break-word;
-  margin-top: 15px;
-  font-size: 0.8rem;
-  margin-right: 16px;
-}
-
-.btn-fav-add, .btn-buy, .btn-fav-added {
-  padding: 10px;
-  text-align: center;
-  font-weight: bold;
-  width: 100%;
-  border: none;
-}
-
-.btn-fav-add img, .btn-buy img {
-  margin-right: 10px;
-}
-
-.btn-buy {
-  background-color: #dcdcdc;
-  color: #f0141e;
-}
-
-.btn-fav-add {
-  background-color: #f3f3f3;
-}
-
-.btn-fav-add div {
-  height: 40px;
-}
-
-.btn-fav-added {
-  color: #f0141e;
-  background-color: #000;
-}
-
-.btn-fav-added div {
-  height: 40px;
 }
 
 

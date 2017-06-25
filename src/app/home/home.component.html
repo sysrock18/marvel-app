@@ -1,12 +1,12 @@
 
-<div class="container-fluid page">
-	<div class="loading || loadingFav" *ngIf="loading">
+<div class="container-fluid">
+	<div class="loading" *ngIf="loading || loadingFav">
 		<img src="../../assets/loader.gif" />
 	</div>
 
 	<div class="row">
 		
-		<div id="characters-id" class="col-md-9 characters-container">
+		<div id="characters-container" class="col-md-9">
 			<div class="title-characters">
 				<span>Characters</span>
 				<button class="btn btn-warning btn-sm" (click)="getRandomComics()">Get Random Favourite Comics!</button>
@@ -16,8 +16,8 @@
 				{{ resultMsg }}
 			</div>
 
-			<div class="row characters" *ngIf="!loading">
-				<div class="col-character col-sm-12 col-md-12 col-lg-6 col-xl-6" *ngFor="let character of characters">
+			<div class="row characters-row" *ngIf="!loading">
+				<div class="character-col col-sm-12 col-md-12 col-lg-6 col-xl-6" *ngFor="let character of characters">
 					<div class="item">
 						<img src="{{ character.thumbnail.path + '/standard_large.' + character.thumbnail.extension }}" class="rounded-circle" />
 
@@ -49,19 +49,19 @@
 
 		</div>
 
-		<div id="favourites-id" class="col-md-3 favourites-container">
+		<div id="favourites-container" class="col-md-3">
 			<div class="title-favourites">
 				<span>My Favourites</span>
 			</div>
 
-			<div class="row favourites">
+			<div class="row favourites-row">
 
 				<div class="no-favourites" *ngIf="favourites.length<1">
 					No favourites added yet...
 				</div>
 
 				<div class="container-item-fav" *ngFor="let favourite of favourites">
-					<div class="item-fav" (click)="openDetail(content)">
+					<div class="item-fav" (click)="openDetailFavourite(content, favourite.id)">
 						<img src="assets/btn-delete.png" class="rounded-circle" class="btn-delete" (click)="delete(favourite.id)" />
 						<img src="{{ favourite.imgPath + '/standard_large.' + favourite.imgExtension }}" id="magazine" />
 						<p>{{ favourite.title }}</p>
@@ -75,7 +75,22 @@
 
 	<ng-template #content let-c="close" let-d="dismiss">
 		<div class="modal-body">
-			<p>One fine body&hellip;</p>
+			<img src="assets/btn-close.png" class="close" aria-label="Close" (click)="c()" />
+			<div class="info">
+				<img src="{{ favouriteSelected.imgPath + '/portrait_large.' + favouriteSelected.imgExtension }}" />
+				<h5>{{ favouriteSelected.title }}</h5>
+				<div class="description">{{ favouriteSelected.description }}</div>
+			</div>
+			<div class="options">
+				<div class="btn-fav-added w-50 float-left">
+					<img src="../../assets/btn-favourites-primary.png" />
+					<span>ADDED TO FAVOURITES</span>
+				</div>
+				<div class="btn-buy w-50 float-left">
+					<img src="../../assets/shopping-cart-primary.png" />
+					BUY FOR ${{ favouriteSelected.price }}
+				</div>
+			</div>
 		</div>
 	</ng-template>
 	

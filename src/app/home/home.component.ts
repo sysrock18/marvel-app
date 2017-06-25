@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { ApiService } from '../shared/services';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { FavouritesStorage } from '../shared/services';
 
 @Component({
   selector: 'app-home',
@@ -21,16 +22,24 @@ export class HomeComponent implements OnInit, AfterViewChecked {
   public search_value = "";
   public favourites = [];
   public resultMsg = "";
+  public favouriteSelected = {
+    title: "",
+    description: "",
+    price: "",
+    imgPath: "",
+    imgExtension: ""
+  };
 
   constructor(
   	public apiService: ApiService,
+    public favStorage: FavouritesStorage,
   	public router: Router,
   	public route: ActivatedRoute,
-    private modalService: NgbModal
+    public modalService: NgbModal
   ) { }
 
   ngOnInit() {
-  	this.favourites = JSON.parse(localStorage.getItem('favourites'));
+  	this.favourites = this.favStorage.getFavourites();
 
   	this.route
       .queryParams
@@ -42,8 +51,9 @@ export class HomeComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    document.getElementById('favourites-id').style.height = '100vh';
-    document.getElementById('favourites-id').style.height = document.getElementById('characters-id').offsetHeight.toString()+'px';
+    //This keeps the favourites containerwith the same haight of characters container or minimum height 100vh
+    document.getElementById('favourites-container').style.height = '100vh';
+    document.getElementById('favourites-container').style.height = document.getElementById('characters-container').offsetHeight.toString()+'px';
 	}
 
   getCharacters() {
@@ -93,11 +103,14 @@ export class HomeComponent implements OnInit, AfterViewChecked {
  
   	if(index >= 0) {
       this.favourites.splice(index, 1);
-      localStorage.setItem('favourites', JSON.stringify(this.favourites));
+      this.favStorage.updateFavourites(this.favourites);
    	}
 
   }
 
+  /*
+    This gets at least 3 random comics of the characters displayed on the current page. Later cheks if the
+    comics are in the stored favourites for add or not a new user favourite comic */
   getRandomComics() {
     this.loadingFav = true;
 
@@ -108,9 +121,11 @@ export class HomeComponent implements OnInit, AfterViewChecked {
     comics = comics.sort( function() { return 0.5 - Math.random() } ).splice(0,3);
     
     for(var i = 0; i < comics.length; i++) {
-      let id = comics[i].resourceURI.split("/");
-      id = id[id.length-1];
+      let uriElements = comics[i].resourceURI.split("/");
+      let id = uriElements[uriElements.length-1];
+
       var index = this.favourites.findIndex(x=>x.id===id);
+
       if(index < 0) {
         this.apiService.get('comics/'+id, [])
         .subscribe(resp => {
@@ -124,27 +139,32 @@ export class HomeComponent implements OnInit, AfterViewChecked {
             imgExtension: comic.thumbnail.extension
           };
 
-          if(localStorage.getItem('favourites')) {
-            let storedFavourites = JSON.parse(localStorage.getItem('favourites'));
-            storedFavourites.push(
-              favComic
-            );
-            localStorage.setItem('favourites', JSON.stringify(storedFavourites));
-          } else {
-            let favourites = JSON.stringify([
-              favComic
-            ]);
-            localStorage.setItem('favourites', favourites);
-          }
+          this.favStorage.addFavourite(favComic);
 
-          this.favourites = JSON.parse(localStorage.getItem('favourites'));
+          this.favourites = this.favStorage.getFavourites();
         });
       }
     }
   }
 
-  openDetail(content) {
-    this.modalService.open(content);
+  openDetailFavourite(content, id) {
+    this.loadingFav = true;
+
+    this.apiService.get('comics/'+id, [])
+    .subscribe(
+      resp => {
+        this.loadingFav = false;
+
+        let comic = resp.data.results[0];
+
+        this.favouriteSelected.title = comic.title;
+        this.favouriteSelected.description = comic.description;
+        this.favouriteSelected.price = comic.prices[0].price;
+        this.favouriteSelected.imgPath = comic.thumbnail.path;
+        this.favouriteSelected.imgExtension = comic.thumbnail.extension;
+        this.modalService.open(content);
+      }
+    );
   }
 
 }

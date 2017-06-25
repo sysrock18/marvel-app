@@ -5,73 +5,73 @@ body, html {
 }
 
 ngb-pagination /deep/ .page-item .page-link {
-    margin-left: 5px;
-    color: #c2c2c2;
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19);
+  margin-left: 5px;
+  color: #c2c2c2;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19);
 }
 
 ngb-pagination /deep/ .page-item.active .page-link {
-    margin-left: 5px;
-    font-weight: bold;
-    color: black;
-    background-color: #cbcbcb;
-    border-color: #cbcbcb;
-    box-shadow: none;
+  margin-left: 5px;
+  font-weight: bold;
+  color: black;
+  background-color: #cbcbcb;
+  border-color: #cbcbcb;
+  box-shadow: none;
 }
 
 ngb-pagination /deep/ .pagination {
-    -webkit-box-pack: center!important;
-    -webkit-justify-content: center!important;
-    -ms-flex-pack: center!important;
-    justify-content: center!important;
-    margin-top: 30px;
-    margin-bottom: 0px !important;
-    padding-bottom: 20px;
+  -webkit-box-pack: center!important;
+  -webkit-justify-content: center!important;
+  -ms-flex-pack: center!important;
+  justify-content: center!important;
+  margin-top: 30px;
+  margin-bottom: 0px !important;
+  padding-bottom: 20px;
 }
 
 ngb-pagination /deep/ .page-item .page-link[aria-label="Previous"] span,
 ngb-pagination /deep/ .page-item .page-link[aria-label="Next"] span {
-    display: none;
+  display: none;
 }
 
 ngb-pagination /deep/ .page-item .page-link[aria-label="Previous"]:hover,
 ngb-pagination /deep/ .page-item .page-link[aria-label="Next"]:hover {
-    background-color: #fff !important;
+  background-color: #fff !important;
 }
 
 ngb-pagination /deep/ .page-item .page-link[aria-label="Previous"],
 ngb-pagination /deep/ .page-item .page-link[aria-label="Next"] {
-    padding: 6px;
+  padding: 6px;
 }
 
 ngb-pagination /deep/ .page-item .page-link[aria-label="Previous"]:after {
-    background: url('assets/btn_arrow_left.png');
-    background-size: 24px 24px;
-    height: 24px;
-    width: 24px;
-    display: block;
-    content: "";
+  background: url('assets/btn_arrow_left.png');
+  background-size: 24px 24px;
+  height: 24px;
+  width: 24px;
+  display: block;
+  content: "";
 }
 
 ngb-pagination /deep/ .page-item .page-link[aria-label="Next"]:after {
-    background: url('assets/btn_arrow_right.png');
-    background-size: 24px 24px;
-    height: 24px;
-    width: 24px;
-    display: block;
-    content: "";
+  background: url('assets/btn_arrow_right.png');
+  background-size: 24px 24px;
+  height: 24px;
+  width: 24px;
+  display: block;
+  content: "";
 }
 
 .loading {
-    position: fixed;
-    z-index: 3;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
+  position: fixed;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
 }
 
 .loading img {
@@ -88,4 +88,63 @@ ngb-pagination /deep/ .page-item .page-link[aria-label="Next"]:after {
   font-size: 30px;
   color: grey;
   padding-top: 7rem;
+}
+
+/* Detail Comic Item Styles */
+.info {
+  padding: 15px;
+}
+
+.info img {
+  height: 180px;
+  width: 120px;
+  float: left;
+  margin-right: 10px;
+}
+
+.options {
+  clear: both;
+  font-size: 0.8rem;
+  padding-top: 15px;
+}
+
+.info .description {
+  word-wrap: break-word;
+  margin-top: 15px;
+  font-size: 0.8rem;
+  margin-right: 16px;
+}
+
+.btn-fav-add, .btn-buy, .btn-fav-added {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
+  border: none;
+}
+
+.btn-fav-add img, .btn-buy img {
+  margin-right: 10px;
+}
+
+.btn-buy {
+  background-color: #dcdcdc;
+  color: #f0141e;
+}
+
+.btn-fav-add {
+  background-color: #f3f3f3;
+}
+
+.btn-fav-add div {
+  height: 40px;
+}
+
+.btn-fav-added {
+  color: #f0141e;
+  background-color: #000;
+}
+
+.btn-fav-added div {
+  height: 40px;
 }

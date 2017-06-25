@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../shared/services';
+import { FavouritesStorage } from '../shared/services';
 
 @Component({
   selector: 'app-comics',
@@ -24,12 +25,13 @@ export class ComicsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private favStorage: FavouritesStorage
   ) { }
 
   ngOnInit() {
-    if(localStorage.getItem('favourites')) {
-      this.favourites = JSON.parse(localStorage.getItem('favourites'));
+    if(this.favStorage.getFavourites()) {
+      this.favourites = this.favStorage.getFavourites();
     }
 
     this.route
@@ -59,7 +61,7 @@ export class ComicsComponent implements OnInit {
         this.loading = false;
         this.comics = resp.data.results;
         this.size = resp.data.total;
-        
+
         if(this.size < 1) {
           this.resultMsg = "No results...";
         }
@@ -81,20 +83,9 @@ export class ComicsComponent implements OnInit {
         imgExtension: comic.thumbnail.extension
       };
 
-      if(localStorage.getItem('favourites')) {
-        let storedFavourites = JSON.parse(localStorage.getItem('favourites'));
-        storedFavourites.push(
-          favComic
-        );
-        localStorage.setItem('favourites', JSON.stringify(storedFavourites));
-      } else {
-        let favourites = JSON.stringify([
-          favComic
-        ]);
-        localStorage.setItem('favourites', favourites);
-      }
+      this.favStorage.addFavourite(favComic);
     }
-    this.favourites = JSON.parse(localStorage.getItem('favourites'));
+    this.favourites = this.favStorage.getFavourites();
   }
 
   checkFavourite(id) {

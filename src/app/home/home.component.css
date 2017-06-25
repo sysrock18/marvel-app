@@ -1,11 +1,11 @@
 
-.characters-container {
+#characters-container {
   padding-top: 1rem;
   padding-left: 1.5rem;
   background-color: #e2e2e2;
 }
 
-.favourites-container {
+#favourites-container {
   padding-top: 1rem;
   background-color: #cbcbcb;
   overflow: auto;
@@ -22,16 +22,6 @@
   padding-left: 35px;
 }
 
-.title-characters span, .title-favourites span {
-  display: inline-block;
-  vertical-align: middle;
-  line-height: normal;
-}
-
-.title-characters button {
-  float: right;
-}
-
 .title-characters {
   background: url('../../assets/characters.png') 0 no-repeat;
   background-size: 28px;
@@ -44,18 +34,24 @@
   background-size: 28px;
 }
 
-.col-character {
-  min-width: 352px;
+.title-characters span, .title-favourites span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
 }
 
-.characters {
+.title-characters button {
+  float: right;
+}
+
+.characters-row {
   margin-top: 20px;
   max-width: 1010px;
   margin-right: auto;
   margin-left: auto;
 }
 
-.characters .item {
+.characters-row .item {
   height: auto;
   position: relative;
   max-width: 500px;
@@ -64,10 +60,8 @@
   margin-bottom: 20px;
 }
 
-.item-info {
-	position: relative;
-	z-index: 2;
-	margin-left: 10px;
+.character-col {
+  min-width: 352px;
 }
 
 .item img {
@@ -80,15 +74,10 @@
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.item-info h5 {
-}
-
-.item-info .card-info {
-	height: 100%;
-	z-index: 1;
-	margin-top: 10px;
-	background-color: #fff;
-	border:1px solid rgba(0,0,0,.125);
+.item-info {
+	position: relative;
+	z-index: 2;
+	margin-left: 10px;
 }
 
 .item-info button {
@@ -105,7 +94,7 @@
 	left: 10px;
 }
 
-.favourites {
+.favourites-row {
 	max-width: 360px;
 	margin:auto;
 }
@@ -136,13 +125,6 @@
 
 .item-fav p {
 	text-align: center;
-}
-
-.pvw-title span {
-  display: none;
-}
-.pvw-title:after {
-  content: 'whatever it is you want to add';
 }
 
 .clearfix {
@@ -189,9 +171,17 @@
 }
 
 .no-favourites {
-    width: 100%;
-    text-align: center;
-    margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.modal-body {
+	padding:0;
+}
+
+.modal-body img.close {
+  padding:7px;
 }
 
 

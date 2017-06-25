@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { ApiService } from '../shared/services';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-home',
@@ -12,18 +13,20 @@ export class HomeComponent implements OnInit, AfterViewChecked {
   public isCollapsed = false;
   public page = 1;
   public loading = false;
+  public loadingFav = false;
   public limit = 10;
   public params = [];
   public characters = [];
   public size = 0;
   public search_value = "";
   public favourites = [];
-  public randomChars = [];
+  public resultMsg = "";
 
   constructor(
   	public apiService: ApiService,
   	public router: Router,
-  	public route: ActivatedRoute
+  	public route: ActivatedRoute,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
@@ -44,6 +47,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
 	}
 
   getCharacters() {
+    this.resultMsg = "";
     this.loading = true;
  
     this.params = [
@@ -58,12 +62,20 @@ export class HomeComponent implements OnInit, AfterViewChecked {
     }
 
     this.apiService.get('characters', this.params)
-    .subscribe(resp => {
-      this.loading = false;
-      this.characters = resp.data.results;
-      this.size = resp.data.total;
-      this.randomChars = resp.data.results;
-    });
+    .subscribe(
+      resp => {
+        this.loading = false;
+        this.characters = resp.data.results;
+        this.size = resp.data.total;
+
+        if(this.size < 1) {
+          this.resultMsg = "No results...";
+        }
+      },
+      error => {
+        this.resultMsg = "Comunication error, try again...";
+      }
+    );
   }
 
   goToCharacterComics(character) {
@@ -87,6 +99,8 @@ export class HomeComponent implements OnInit, AfterViewChecked {
   }
 
   getRandomComics() {
+    this.loadingFav = true;
+
     let comics = [];
     for(var i = 0; i < this.characters.length; i++) {
       comics = comics.concat(this.characters[i].comics.items);
@@ -100,6 +114,8 @@ export class HomeComponent implements OnInit, AfterViewChecked {
       if(index < 0) {
         this.apiService.get('comics/'+id, [])
         .subscribe(resp => {
+          this.loadingFav = false;
+
           let comic = resp.data.results[0];
           let favComic = {
             id: comic.id,
@@ -125,6 +141,10 @@ export class HomeComponent implements OnInit, AfterViewChecked {
         });
       }
     }
+  }
+
+  openDetail(content) {
+    this.modalService.open(content);
   }
 
 }

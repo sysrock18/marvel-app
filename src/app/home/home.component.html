@@ -1,4 +1,8 @@
+
 <div class="container-fluid page">
+	<div class="loading || loadingFav" *ngIf="loading">
+		<img src="../../assets/loader.gif" />
+	</div>
 
 	<div class="row">
 		
@@ -6,6 +10,10 @@
 			<div class="title-characters">
 				<span>Characters</span>
 				<button class="btn btn-warning btn-sm" (click)="getRandomComics()">Get Random Favourite Comics!</button>
+			</div>
+
+			<div class="no-results" *ngIf="resultMsg.length>0">
+				{{ resultMsg }}
 			</div>
 
 			<div class="row characters" *ngIf="!loading">
@@ -37,7 +45,7 @@
 
 			</div>
 
-			<ngb-pagination [collectionSize]="size" [(page)]="page" [maxSize]="5" (pageChange)="getCharacters()" *ngIf="!loading"></ngb-pagination>
+			<ngb-pagination [collectionSize]="size" [(page)]="page" [maxSize]="5" (pageChange)="getCharacters()" *ngIf="!loading && size"></ngb-pagination>
 
 		</div>
 
@@ -48,8 +56,12 @@
 
 			<div class="row favourites">
 
+				<div class="no-favourites" *ngIf="favourites.length<1">
+					No favourites added yet...
+				</div>
+
 				<div class="container-item-fav" *ngFor="let favourite of favourites">
-					<div class="item-fav">
+					<div class="item-fav" (click)="openDetail(content)">
 						<img src="assets/btn-delete.png" class="rounded-circle" class="btn-delete" (click)="delete(favourite.id)" />
 						<img src="{{ favourite.imgPath + '/standard_large.' + favourite.imgExtension }}" id="magazine" />
 						<p>{{ favourite.title }}</p>
@@ -60,5 +72,11 @@
 		</div>
 
 	</div>
+
+	<ng-template #content let-c="close" let-d="dismiss">
+		<div class="modal-body">
+			<p>One fine body&hellip;</p>
+		</div>
+	</ng-template>
 	
 </div>

@@ -20,6 +20,7 @@ export class ComicsComponent implements OnInit {
   public size = 0;
   public page = 1;
   public favourites = [];
+  public resultMsg = "";
 
   constructor(
     private route: ActivatedRoute,
@@ -44,6 +45,7 @@ export class ComicsComponent implements OnInit {
   }
 
   getCharacterComics() {
+    this.resultMsg = "";
     this.loading = true;
  
     this.params = [
@@ -52,11 +54,20 @@ export class ComicsComponent implements OnInit {
     ];
 
     this.apiService.get('characters/'+this.characterId+'/comics', this.params)
-    .subscribe(resp => {
-      this.loading = false;
-      this.comics = resp.data.results;
-      this.size = resp.data.total;
-    });
+    .subscribe(
+      resp => {
+        this.loading = false;
+        this.comics = resp.data.results;
+        this.size = resp.data.total;
+        
+        if(this.size < 1) {
+          this.resultMsg = "No results...";
+        }
+      },
+      error => {
+        this.resultMsg = "Comunication error, try again...";
+      }
+    );
   }
 
   addToFavourites(comic) {

@@ -1,8 +1,16 @@
 <div class="container-fluid container-comics page">
+
+	<div class="loading" *ngIf="loading">
+		<img src="../../assets/loader.gif" />
+	</div>
 	
 	<div class="avatar-character">
 		<img src="{{ characterImagePath + '/standard_large.' + characterImageExtension }}" class="rounded-circle" />
 		<span>{{ characterName }}'s Comics</span>
+	</div>
+
+	<div class="no-results" *ngIf="resultMsg.length>0">
+		{{ resultMsg }}
 	</div>
 	
 	<div class="container">
@@ -29,7 +37,7 @@
 			</div>
 		</div>
 
-		<ngb-pagination [collectionSize]="size" [(page)]="page" [maxSize]="5" (pageChange)="getCharacterComics()" *ngIf="!loading"></ngb-pagination>
+		<ngb-pagination [collectionSize]="size" [(page)]="page" [maxSize]="5" (pageChange)="getCharacterComics()" *ngIf="!loading && size"></ngb-pagination>
 
 	</div>
 </div>

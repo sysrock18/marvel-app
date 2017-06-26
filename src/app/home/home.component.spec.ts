@@ -6,7 +6,7 @@ describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 
-  beforeEach(async(() => {
+  /*beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HomeComponent ]
     })
@@ -21,5 +21,5 @@ describe('HomeComponent', () => {
 
   it('should be created', () => {
     expect(component).toBeTruthy();
-  });
+  });*/
 });

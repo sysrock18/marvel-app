@@ -2,15 +2,13 @@
 
 Aplicacion que presenta los comics de los personajes de marvel a traves de la API de marvel. Esta desarrollada con el framework Angular version 4.2.1
 
-## Contenido del repositorio
+## Preview
 
-* Codigo fuente de la aplicación
-* Documento de capas de la aplicación: documentacion_SPA_challenge.pdf
-* Ejercicio de Refactory y preguntas:
-	* Codigo inicial del ejercicio (bad_code.js)
-	* Codigo refactorizado (refactor_code.js) 
-	* Documento de malas practicas en el codigo propuesto y correcciones realizadas a dichas malas practicas. Tambien contiene las respuestas a las preguntas formuladas en el test (code_refactoring_preguntas.pdf)
+![Principal](screenshots/screenshot1.png?raw=true "Principal")
 
+![Comic](screenshots/screenshot3.png?raw=true "Comic")
+
+![Loading](screenshots/loading-ironman.png?raw=true "Loading")
 
 ## Ejecucion de la App
 

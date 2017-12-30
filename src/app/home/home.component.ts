@@ -39,7 +39,8 @@ export class HomeComponent implements OnInit, AfterViewChecked {
   ) { }
 
   ngOnInit() {
-  	this.favourites = this.favStorage.getFavourites();
+    const favouriteComics = this.favStorage.getFavourites()
+  	this.favourites = favouriteComics ? favouriteComics : []
 
   	this.route
       .queryParams
@@ -51,9 +52,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    //This keeps the favourites containerwith the same haight of characters container or minimum height 100vh
-    document.getElementById('favourites-container').style.height = '100vh';
-    document.getElementById('favourites-container').style.height = document.getElementById('characters-container').offsetHeight.toString()+'px';
+    
 	}
 
   getCharacters() {
@@ -65,7 +64,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
       {key:'offset', value:this.limit * (this.page - 1)}
     ];
 
-    if(this.search_value) {
+    if (this.search_value) {
       this.params.push(
         {key:'nameStartsWith', value:this.search_value }
       );
@@ -78,7 +77,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
         this.characters = resp.data.results;
         this.size = resp.data.total;
 
-        if(this.size < 1) {
+        if (this.size < 1) {
           this.resultMsg = "No results...";
         }
       },
